@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import { joinRoomProps } from "./types/serverTypes";
+import { joinRoomProps, packageDataProps } from "./types/serverTypes";
 
 dotenv.config();
 
@@ -34,6 +34,10 @@ const start = () => {
       socket.on("join_room", ({ room_id }: joinRoomProps) => {
         socket.join(room_id);
         console.log(`User with id:${socket.id} joined room: ${room_id}.`);
+      });
+
+      socket.on("send_message", (packageData: packageDataProps) => {
+        console.log(packageData);
       });
 
       socket.on("disconnect", () => {
