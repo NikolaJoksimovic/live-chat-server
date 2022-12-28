@@ -5,7 +5,6 @@ import { Server } from "socket.io";
 import { joinRoomProps, packageDataProps } from "./types/serverTypes";
 
 dotenv.config();
-
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
@@ -33,11 +32,10 @@ const start = () => {
 
       socket.on("join_room", ({ room_id }: joinRoomProps) => {
         socket.join(room_id);
-        console.log(`User with id:${socket.id} joined room: ${room_id}.`);
       });
 
       socket.on("send_message", (packageData: packageDataProps) => {
-        console.log(packageData);
+        socket.to(packageData.room_id).emit("receive_message", packageData);
       });
 
       socket.on("disconnect", () => {
