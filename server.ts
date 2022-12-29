@@ -1,10 +1,10 @@
-import express from "express";
-import dotenv from "dotenv";
+require("dotenv").config();
+const express = require("express");
+
 import { createServer } from "http";
 import { Server } from "socket.io";
 import { joinRoomProps, packageDataProps } from "./types/serverTypes";
 
-dotenv.config();
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
