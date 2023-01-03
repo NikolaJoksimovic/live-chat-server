@@ -14,6 +14,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "grunt": "^1.5.3",
+    "grunt-run": "^0.8.1",
+    "grunt-ts": "^6.0.0-beta.22",
     "nodemon": "^2.0.20",
     "socket.io": "^4.5.4",
     "ts-node": "^10.9.1"
